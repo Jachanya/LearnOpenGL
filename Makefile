@@ -1,13 +1,22 @@
 CXX = clang
 LIBS = -lglfw3 -lopengl32 -luser32 -lgdi32 -lkernel32 -lshell32 -lvcruntime -lmsvcrtd -l libcmt
 LDFLAGS = -L lib/
-SRC := $(wildcard src/*.c)
+
+SRC := $(wildcard src/*.cpp) 
+SRC += $(wildcard src/*.hpp) 
+SRC += $(wildcard src/*.c)
+
+#DEP += $(filter %.c, $(SRC))
+DEP += $(filter %.cpp, $(SRC))
+DEP += $(filter %.hpp, $(SRC))
+
+
 
 run: main
-	debug/main.exe
+	a.exe
 
-main: main.cpp
-	$(CXX) main.cpp -I include/ $(SRC) $(LDFLAGS) $(LIBS) -o debug/main.exe
+main: $(DEP)
+	$(CXX) main.cpp -I include $(SRC) $(LDFLAGS) $(LIBS)
 
 clean:
 	rm -rf debug
