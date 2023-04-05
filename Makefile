@@ -5,6 +5,7 @@ LDFLAGS = -L lib/
 SRC := $(wildcard src/*.cpp) 
 SRC += $(wildcard src/*.hpp) 
 SRC += $(wildcard src/*.c)
+SRC += $(wildcard src/*.h)
 
 #DEP += $(filter %.c, $(SRC))
 DEP += $(filter %.cpp, $(SRC))
