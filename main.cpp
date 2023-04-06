@@ -23,11 +23,6 @@ const unsigned int SCR_HEIGHT = 600;
 
 int main()
 {
-    glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
-    glm::mat4 trans = glm::mat4(1.0f);
-    trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f));
-    vec = trans * vec;
-    std::cout << vec.x << vec.y << vec.z << std::endl;
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
@@ -195,6 +190,8 @@ int main()
 
         unsigned int transformLoc = glGetUniformLocation(shader.ID, "transform");
         glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+
+
         shader.setGlUniform4f("offsetValue", counter , 0.1f, 0.1f, 0.1f);
         glBindTexture(GL_TEXTURE_2D, texture);
 
@@ -215,6 +212,27 @@ int main()
             // draw our first triangle
             shader.use();
             glBindVertexArray(VAO[1]); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
+            
+            //counter += 0.01f;
+            // update the uniform color
+            trans = glm::mat4(1.0f);
+            trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+            trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+
+            //unsigned int transformLoc = glGetUniformLocation(shader.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+            
+            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+            //counter += 0.01f;
+            // update the uniform color
+            trans = glm::mat4(1.0f);
+            trans = glm::translate(trans, glm::vec3(0.1f, -0.1f, 0.0f));
+            trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(1.0f, 0.0f, 1.0f));
+
+            //unsigned int transformLoc = glGetUniformLocation(shader.ID, "transform");
+            glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+
             glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
             glBindVertexArray(0); // no need to unbind it every time
             if(resetCounter == maxCount){
