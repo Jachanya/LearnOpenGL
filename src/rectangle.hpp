@@ -18,9 +18,9 @@ namespace NNGraphics{
         unsigned int VBO;
         unsigned int VAO;
         float vertices[32] = {
-            0.5f,  0.0f, 0.0f, 0.0f, 0.0f, 0.0f, // right 
-            0.5f, 0.5f, 0.0f, 0.0f, 0.0f, 0.0f,  // top  
-            0.0f, 0.5f, 0.0f,  0.0f, 0.0f, 0.0f, 
+            0.05f,  0.0f, 0.0f, 0.0f, 0.0f, 0.0f, // right 
+            0.05f, 0.05f, 0.0f, 0.0f, 0.0f, 0.0f,  // top  
+            0.0f, 0.05f, 0.0f,  0.0f, 0.0f, 0.0f, 
             0.0f,  0.0f, 0.0f,  0.0f, 0.0f, 0.0f,
         };
 
