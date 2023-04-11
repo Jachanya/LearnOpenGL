@@ -56,32 +56,17 @@ int main()
         return -1;
     }
 
-    NNGraphics::VectorViz arrayObj;
-    std::vector<std::vector<float>> positions = {
-        
-        {0.1f + 0.05f, 0.1f, 0.0f},
-        {0.1f + 0.10f, 0.1f, 0.0f},
-        {0.1f + 0.15f, 0.1f, 0.0f},
-        {0.1f + 0.20f, 0.1f, 0.0f},
-        {0.1f + 0.25f, 0.1f, 0.0f},
-    };
-    std::vector<std::vector<float>> colors = {
-        {0.4f, 0.4f, 0.0f},
-        {0.6f, 0.6f, 0.0f},
-        {0.6f, 0.6f, 0.0f},
-        {0.1f, 0.8f, 0.0f},
-        {0.6f, 0.6f, 0.0f},
-    };
+    NNGraphics::orientation orient1 = NNGraphics::orientation::vertical;
+    NNGraphics::orientation orient2 = NNGraphics::orientation::horizontal;
 
-    NNGraphics::VectorViz arrayObj2;
-    std::vector<std::vector<float>> positions2 = {
-        
-        {0.1f + 0.05f, 0.1f  + 0.06, 0.0f},
-        {0.1f + 0.10f, 0.1f + 0.06, 0.0f},
-        {0.1f + 0.15f, 0.1f + 0.06, 0.0f},
-        {0.1f + 0.20f, 0.1f + 0.06, 0.0f},
-        {0.1f + 0.25f, 0.1f + 0.06, 0.0f},
-    };
+    NNGraphics::VectorViz arrayObj(orient1, 6);
+    std::vector<float> positions = {0.1f, 0.1f, 0.0f};
+    std::vector<float> colors = {0.4f, 0.4f, 0.0f};
+
+    NNGraphics::VectorViz arrayObj2(orient2, 6);
+    std::vector<float> positions2 = {0.1f, 0.1f  + 0.06, 0.0f};
+
+    bool someNonSense = true;
     // -----------
     while (!glfwWindowShouldClose(window))
     {
@@ -95,9 +80,8 @@ int main()
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        arrayObj.display(positions, colors);
+        arrayObj.display(positions,colors);
         arrayObj2.display(positions2, colors);
-
 
         glfwSwapBuffers(window);
         glfwPollEvents();

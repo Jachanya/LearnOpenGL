@@ -5,14 +5,23 @@
 #include "rectangle.hpp"
 
 namespace NNGraphics{
+    enum orientation{
+        horizontal,
+        vertical
+    };
+
     class VectorViz{
     private:
+    orientation orient;
+    uint32_t length;
     std::vector<float> block;
     NNGraphics::Rectangle rect{"src/shadersProgram/shader.vs", "src/shadersProgram/shader.fs"};
     public:
 
-    VectorViz();
-    void display(std::vector<std::vector<float>>& positions, std::vector<std::vector<float>>& colors);
+    VectorViz(orientation orient, uint32_t length);
+    void display(std::vector<float>& positions, std::vector<float>& colors);
+    void setOrientation(orientation orient){orient = orient;}
     };
+    
 }
 #endif

@@ -67,6 +67,11 @@ void Shader::use()
 { 
     glUseProgram(ID); 
 }
+
+void Shader::setGlUniformMatrix4fv(const char* uniformName, glm::f32 *address){
+    unsigned int projectionLoc = glGetUniformLocation(ID, uniformName);
+    glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, address);
+}
 // utility uniform functions
 // ------------------------------------------------------------------------
 void Shader::setBool(const std::string &name, bool value) const

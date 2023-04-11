@@ -17,11 +17,19 @@ namespace NNGraphics{
         unsigned int EBO;
         unsigned int VBO;
         unsigned int VAO;
+        // float vertices[32] = {
+        //     0.05f,  0.0f, 0.0f, 0.0f, 0.0f, 0.0f, // right 
+        //     0.05f, 0.05f, 0.0f, 0.0f, 0.0f, 0.0f,  // top  
+        //     0.0f, 0.05f, 0.0f,  0.0f, 0.0f, 0.0f, 
+        //     0.0f,  0.0f, 0.0f,  0.0f, 0.0f, 0.0f,
+        // };
+
         float vertices[32] = {
-            0.05f,  0.0f, 0.0f, 0.0f, 0.0f, 0.0f, // right 
-            0.05f, 0.05f, 0.0f, 0.0f, 0.0f, 0.0f,  // top  
-            0.0f, 0.05f, 0.0f,  0.0f, 0.0f, 0.0f, 
-            0.0f,  0.0f, 0.0f,  0.0f, 0.0f, 0.0f,
+            // positions          // texture coords
+            0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f, // top right
+            0.5f, -0.5f, 0.0f,   1.0f, 0.0f, 0.0f,// bottom right
+            -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 0.0f,// bottom left
+            -0.5f,  0.5f, 0.0f,   0.0f, 1.0f,  0.0f // top left 
         };
 
         unsigned int indices[6]  = {
