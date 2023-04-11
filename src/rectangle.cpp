@@ -58,9 +58,9 @@ namespace NNGraphics{
         // transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
         // transform = glm::scale(transform, glm::vec3(15, 15, 15)); 
 
-        const float radius = 10.0f;
-        float camX =  static_cast<float>(sin(glfwGetTime())) * radius;
-        float camZ =  static_cast<float>(cos(glfwGetTime())) * radius;
+        // const float radius = 10.0f;
+        // float camX =  static_cast<float>(sin(glfwGetTime())) * radius;
+        // float camZ =  static_cast<float>(cos(glfwGetTime())) * radius;
         glm::mat4 view = glm::mat4(1.0f);
         view = glm::lookAt(glm::vec3(0.0, 0.0, 10.0), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0)); 
         // view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));

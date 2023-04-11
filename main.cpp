@@ -15,7 +15,7 @@
 #include <vector>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow *window);
+void processInput(GLFWwindow *window, NNGraphics::VectorViz& arrayObj);
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -64,7 +64,13 @@ int main()
     std::vector<float> colors = {0.4f, 0.4f, 0.0f};
 
     NNGraphics::VectorViz arrayObj2(orient2, 6);
-    std::vector<float> positions2 = {0.1f, 0.1f  + 0.06, 0.0f};
+    std::vector<float> positions2 = {0.3f + 0.1f,0.1, 0.0f};
+    std::vector<float> positions3 = {0.6f  + 0.1f, 0.1, 0.0f};
+    std::vector<float> positions4 = {0.9f  + 0.1f, 0.1, 0.0f};
+    std::vector<float> positions5 = {1.2f  + 0.1f, 0.1, 0.0f};
+    std::vector<float> positions6 = {1.5f  + 0.1f, 0.1, 0.0f};
+    std::vector<float> positions7 = {1.8f  + 0.1f, 0.1, 0.0f};
+    
 
     bool someNonSense = true;
     // -----------
@@ -72,7 +78,7 @@ int main()
     {
         // input
         // -----
-        processInput(window);
+        processInput(window, arrayObj2);
 
         // render
         // ------
@@ -80,8 +86,13 @@ int main()
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        arrayObj.display(positions,colors);
+        // arrayObj.display(positions,colors);
         arrayObj2.display(positions2, colors);
+        arrayObj2.display(positions3, colors);
+        arrayObj2.display(positions4, colors);
+        arrayObj2.display(positions5, colors);
+        arrayObj2.display(positions6, colors);
+        arrayObj2.display(positions7, colors);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -100,7 +111,7 @@ int main()
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
-void processInput(GLFWwindow *window)
+void processInput(GLFWwindow *window, NNGraphics::VectorViz& arrayObj)
 {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
@@ -113,6 +124,10 @@ void processInput(GLFWwindow *window)
 
         std::cout << "Height: " << height << std::endl;
         std::cout << "Width: " << width << std::endl;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS){
+        arrayObj.transpose();
     }
 }
 
