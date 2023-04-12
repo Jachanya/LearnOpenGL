@@ -24,4 +24,8 @@ namespace NNGraphics {
             arrayObj.display(row_position, color);
         }
     }
+
+    void MatrixViz::transpose(){
+        
+    }
 }

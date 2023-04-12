@@ -11,12 +11,13 @@
 #include "src/stb_header.h"
 #include "src/vector_viz.hpp"
 #include "src/matrix_viz.hpp"
+#include "src/linAlg.hpp"
 
 #include <iostream>
 #include <vector>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow *window, NNGraphics::VectorViz& arrayObj);
+void processInput(GLFWwindow *window, NNGraphics::LinAlg* arrayObj);
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -75,7 +76,7 @@ int main()
     {
         // input
         // -----
-        processInput(window, arrayObj);
+        processInput(window, &matrixObj);
 
         // render
         // ------
@@ -110,7 +111,7 @@ int main()
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
-void processInput(GLFWwindow *window, NNGraphics::VectorViz& arrayObj)
+void processInput(GLFWwindow *window, NNGraphics::LinAlg* arrayObj)
 {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
@@ -126,7 +127,7 @@ void processInput(GLFWwindow *window, NNGraphics::VectorViz& arrayObj)
     }
 
     if (glfwGetKey(window, GLFW_KEY_T) == GLFW_PRESS){
-        arrayObj.transpose();
+        arrayObj->transpose();
     }
 }
 

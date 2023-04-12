@@ -3,9 +3,10 @@
 
 #include <vector>
 #include "vector_viz.hpp"
+#include "linAlg.hpp"
 
 namespace NNGraphics {
-    class MatrixViz {
+    class MatrixViz : public LinAlg{
     private:
     uint32_t n_rows;
     uint32_t n_cols;
@@ -16,6 +17,7 @@ namespace NNGraphics {
 
     MatrixViz(uint32_t n_rows, uint32_t n_cols);
     void display(std::vector<float> position, std::vector<float> color);
+    void transpose();
     };
 }
 

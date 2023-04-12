@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "rectangle.hpp"
+#include "linAlg.hpp"
 
 namespace NNGraphics{
     enum orientation{
