@@ -11,7 +11,7 @@ namespace NNGraphics{
         vertical
     };
 
-    class VectorViz{
+    class VectorViz : public LinAlg{
     private:
     orientation orient = NNGraphics::orientation::horizontal;
     uint32_t length;
@@ -24,6 +24,7 @@ namespace NNGraphics{
     VectorViz(uint32_t length);
     void display(std::vector<float>& positions, std::vector<float>& colors);
     void setOrientation(orientation orient){orient = orient;}
+    void setLength(uint32_t length){this->length = length;}
     orientation getOrientation(){return orient;}
     void transpose();
     };

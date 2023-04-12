@@ -56,7 +56,7 @@ int main()
         return -1;
     }
 
-    NNGraphics::MatrixViz matrixObj(3, 6);
+    NNGraphics::MatrixViz matrixObj(10, 6);
 
     NNGraphics::VectorViz arrayObj(6);
     std::vector<float> positions = {0.1f, 0.1f, 0.0f};

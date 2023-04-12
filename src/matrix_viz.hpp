@@ -2,6 +2,7 @@
 #define _MATRIX_VIZ_H_
 
 #include <vector>
+#include <algorithm>
 #include "vector_viz.hpp"
 #include "linAlg.hpp"
 
@@ -12,6 +13,7 @@ namespace NNGraphics {
     uint32_t n_cols;
     VectorViz arrayObj;
     std::vector<float> position{0.0,0.0,0.0};
+    std::vector<float> color{0.0,0.0,0.0};
 
     public:
 

@@ -13,7 +13,6 @@ namespace NNGraphics{
         this->color = color;
 
         std::vector<float> new_position;
-
         for(int i = 0; i < this->length; i++){
             new_position = position;
             switch(this->orient){
