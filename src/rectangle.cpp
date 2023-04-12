@@ -59,8 +59,8 @@ namespace NNGraphics{
         // transform = glm::scale(transform, glm::vec3(15, 15, 15)); 
 
         // const float radius = 10.0f;
-        // float camX =  static_cast<float>(sin(glfwGetTime())) * radius;
-        // float camZ =  static_cast<float>(cos(glfwGetTime())) * radius;
+        float camX =  static_cast<float>(sin(glfwGetTime()));
+        float camZ =  static_cast<float>(cos(glfwGetTime()));
         glm::mat4 view = glm::mat4(1.0f);
         view = glm::lookAt(glm::vec3(0.0, 0.0, 10.0), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0)); 
         // view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
@@ -75,7 +75,7 @@ namespace NNGraphics{
         shader.setGlUniformMatrix4fv("transform", glm::value_ptr(transform));
 
         unsigned int colorRectLoc = glGetUniformLocation(shader.ID, "rectColor");
-        glUniform3f(colorRectLoc, color[0], colorAmount, color[2]);
+        glUniform3f(colorRectLoc, color[0], colorAmount, camZ);
         //glDrawArrays(GL_TRIANGLES, 0, 3);
         
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

@@ -21,8 +21,6 @@ void processInput(GLFWwindow *window, NNGraphics::VectorViz& arrayObj);
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
-
-
 int main()
 {
     // glfw: initialize and configure
@@ -64,14 +62,13 @@ int main()
     std::vector<float> colors = {0.4f, 0.4f, 0.0f};
 
     NNGraphics::VectorViz arrayObj2(orient2, 6);
-    std::vector<float> positions2 = {0.3f + 0.1f,0.1, 0.0f};
-    std::vector<float> positions3 = {0.6f  + 0.1f, 0.1, 0.0f};
-    std::vector<float> positions4 = {0.9f  + 0.1f, 0.1, 0.0f};
-    std::vector<float> positions5 = {1.2f  + 0.1f, 0.1, 0.0f};
-    std::vector<float> positions6 = {1.5f  + 0.1f, 0.1, 0.0f};
-    std::vector<float> positions7 = {1.8f  + 0.1f, 0.1, 0.0f};
+    std::vector<float> positions2 = {0.1f,0.1, 0.0f};
+    std::vector<float> positions3 = {0.1f, 0.1, 0.0f};
+    std::vector<float> positions4 = {0.1f, 0.1, 0.0f};
+    std::vector<float> positions5 = {0.1f, 0.1, 0.0f};
+    std::vector<float> positions6 = {0.1f, 0.1, 0.0f};
+    std::vector<float> positions7 = {0.1f, 0.1, 0.0f};
     
-
     bool someNonSense = true;
     // -----------
     while (!glfwWindowShouldClose(window))
@@ -88,11 +85,11 @@ int main()
 
         // arrayObj.display(positions,colors);
         arrayObj2.display(positions2, colors);
-        arrayObj2.display(positions3, colors);
-        arrayObj2.display(positions4, colors);
-        arrayObj2.display(positions5, colors);
-        arrayObj2.display(positions6, colors);
-        arrayObj2.display(positions7, colors);
+        // arrayObj2.display(positions3, colors);
+        // arrayObj2.display(positions4, colors);
+        // arrayObj2.display(positions5, colors);
+        // arrayObj2.display(positions6, colors);
+        // arrayObj2.display(positions7, colors);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -135,7 +132,6 @@ void processInput(GLFWwindow *window, NNGraphics::VectorViz& arrayObj)
 // ---------------------------------------------------------------------------------------------
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
-    
     // make sure the viewport matches the new window dimensions; note that width and 
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
