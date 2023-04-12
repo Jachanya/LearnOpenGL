@@ -12,17 +12,18 @@ namespace NNGraphics{
 
     class VectorViz{
     private:
-    orientation orient;
+    orientation orient = NNGraphics::orientation::horizontal;
     uint32_t length;
     std::vector<float> position;
     std::vector<float> color;
-    
+
     NNGraphics::Rectangle rect{"src/shadersProgram/shader.vs", "src/shadersProgram/shader.fs"};
     public:
 
-    VectorViz(orientation orient, uint32_t length);
+    VectorViz(uint32_t length);
     void display(std::vector<float>& positions, std::vector<float>& colors);
     void setOrientation(orientation orient){orient = orient;}
+    orientation getOrientation(){return orient;}
     void transpose();
     };
     

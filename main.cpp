@@ -10,6 +10,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "src/stb_header.h"
 #include "src/vector_viz.hpp"
+#include "src/matrix_viz.hpp"
 
 #include <iostream>
 #include <vector>
@@ -54,14 +55,13 @@ int main()
         return -1;
     }
 
-    NNGraphics::orientation orient1 = NNGraphics::orientation::vertical;
-    NNGraphics::orientation orient2 = NNGraphics::orientation::horizontal;
+    NNGraphics::MatrixViz matrixObj(3, 6);
 
-    NNGraphics::VectorViz arrayObj(orient1, 6);
+    NNGraphics::VectorViz arrayObj(6);
     std::vector<float> positions = {0.1f, 0.1f, 0.0f};
     std::vector<float> colors = {0.4f, 0.4f, 0.0f};
 
-    NNGraphics::VectorViz arrayObj2(orient2, 6);
+    NNGraphics::VectorViz arrayObj2(6);
     std::vector<float> positions2 = {0.1f,0.1, 0.0f};
     std::vector<float> positions3 = {0.1f, 0.1, 0.0f};
     std::vector<float> positions4 = {0.1f, 0.1, 0.0f};
@@ -75,7 +75,7 @@ int main()
     {
         // input
         // -----
-        processInput(window, arrayObj2);
+        processInput(window, arrayObj);
 
         // render
         // ------
@@ -84,7 +84,9 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
 
         // arrayObj.display(positions,colors);
-        arrayObj2.display(positions2, colors);
+        matrixObj.display(positions2, colors);
+
+        //arrayObj2.display(positions2, colors);
         // arrayObj2.display(positions3, colors);
         // arrayObj2.display(positions4, colors);
         // arrayObj2.display(positions5, colors);

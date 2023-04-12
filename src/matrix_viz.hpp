@@ -9,11 +9,13 @@ namespace NNGraphics {
     private:
     uint32_t n_rows;
     uint32_t n_cols;
+    VectorViz arrayObj;
+    std::vector<float> position{0.0,0.0,0.0};
 
     public:
 
     MatrixViz(uint32_t n_rows, uint32_t n_cols);
-    void display();
+    void display(std::vector<float> position, std::vector<float> color);
     };
 }
 
