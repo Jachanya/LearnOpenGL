@@ -16,6 +16,7 @@ OBJFILES := $(patsubst %.cpp, %.o, $(DEP))
 
 HEADERFILES := $(filter %.hpp, $(SRC))
 
+#git rm --cached src/*.gch
 
 
 run: main

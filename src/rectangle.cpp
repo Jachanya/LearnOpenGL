@@ -43,7 +43,7 @@ namespace NNGraphics{
         glBindVertexArray(0);
     }
     
-    void Rectangle::display(const std::vector<float>& position, const std::vector<float>& color){
+    void Rectangle::display(const std::vector<float>& position, const std::vector<float>& color, int depth){
         shader.use();
         glBindVertexArray(VAO);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO); 
@@ -59,12 +59,22 @@ namespace NNGraphics{
         // transform = glm::scale(transform, glm::vec3(15, 15, 15)); 
 
         // const float radius = 10.0f;
-        float camX =  static_cast<float>(sin(glfwGetTime()));
-        float camY =  static_cast<float>(cos(glfwGetTime()));
-        transform = glm::translate(transform, glm::vec3(camX, camY, 0.0f));
+
+        // float baseAngle = 1.5f * 3.142f;
+        // float halfAngleRange = 0.25f * 3.142f;
+        float camY = static_cast<float>(cos(glfwGetTime()));
+        // float angle = halfAngleRange * c + baseAngle;
+
+        // float camY =  static_cast<float>(sin(angle));
+        // float camX =  static_cast<float>(cos(angle));
+        // transform = glm::translate(transform, glm::vec3(camX, camY, 0.0));
+
+        // transform = glm::rotate(transform, glm::radians(camY*depth*60.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+
         glm::mat4 view = glm::mat4(1.0f);
         view = glm::lookAt(glm::vec3(0.0, 0.0, 10.0), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0)); 
         // view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+        view = glm::rotate(view, glm::radians(camY*90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
         glm::mat4 projection = glm::mat4(1.0f);
         projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);

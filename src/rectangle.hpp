@@ -42,7 +42,7 @@ namespace NNGraphics{
         Rectangle(const char* vertexPath, const char* fragmentPath);
         ~Rectangle();
         //function to call when we want to display rectangle on the screen.
-        void display(const std::vector<float>& position,const std::vector<float>& color);
+        void display(const std::vector<float>& position,const std::vector<float>& color, int depth);
 
         private:
 

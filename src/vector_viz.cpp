@@ -26,7 +26,7 @@ namespace NNGraphics{
                 default:
                     std::cout << "Invalid orientation enum, get help" << std::endl;
             }
-            rect.display(new_position, color);
+            rect.display(new_position, color, i);
         }
 
         // make a rect children class to have different display functinality
