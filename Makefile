@@ -8,16 +8,27 @@ SRC += $(wildcard src/*.c)
 SRC += $(wildcard src/*.h)
 
 #DEP += $(filter %.c, $(SRC))
-DEP += $(filter %.cpp, $(SRC))
-DEP += $(filter %.hpp, $(SRC))
+DEP := $(filter %.cpp, $(SRC))
+DEP += $(filter %.c, $(SRC))
+
+OBJFILES := $(patsubst %.cpp, %.o, $(DEP))
+# OBJFILES += $(patsubst %.c, %.o, $(DEP))
+
+HEADERFILES := $(filter %.hpp, $(SRC))
 
 
 
 run: main
 	a.exe
 
-main: $(DEP)
-	$(CXX) main.cpp -I include $(SRC) $(LDFLAGS) $(LIBS)
+main: $(HEADERFILES) $(OBJFILES)
+	$(CXX) $(OBJFILES) main.cpp -I include $(LDFLAGS) $(LIBS)
+
+%.o : %.c
+	$(CXX) -I include -c $< -o $@
+
+%.o : %.cpp
+	$(CXX) -I include -c $< -o $@
 
 clean:
-	rm -rf debug
+	rm -rf $(OBJFILES)
