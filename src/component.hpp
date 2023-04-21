@@ -1,12 +1,17 @@
 #ifndef _COMPONENT_H_
 #define _COMPONENT_H_
 
-namespace jachan{
+#include "entity.hpp"
 
+namespace jachan
+{
+    class Entity;
+    
     class InputComponent
     {
         public:
         virtual ~InputComponent();
+        virtual void update(Entity &entity) = 0;
     };
 
     class MovementComponent
