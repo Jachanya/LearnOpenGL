@@ -12,9 +12,14 @@ DEP := $(filter %.cpp, $(SRC))
 DEP += $(filter %.c, $(SRC))
 
 OBJFILES := $(patsubst %.cpp, %.o, $(DEP))
-# OBJFILES += $(patsubst %.c, %.o, $(DEP))
+OBJFILES += $(patsubst %.c, %.o, $(DEP))
+
+OBJFILES := $(filter %.o, $(OBJFILES))
 
 HEADERFILES := $(filter %.hpp, $(SRC))
+
+ALLFILES := $(patsubst %.hpp, %.hpp.gch, $(HEADERFILES))
+ALLFILES += $(OBJFILES)
 
 #git rm --cached src/*.gch
 
@@ -32,4 +37,4 @@ main: $(HEADERFILES) $(OBJFILES)
 	$(CXX) -I include -c $< -o $@
 
 clean:
-	rm -rf $(OBJFILES)
+	rm -rf $(ALLFILES)
