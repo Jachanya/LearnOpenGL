@@ -28,7 +28,7 @@ run: main
 	a.exe
 
 main: $(HEADERFILES) $(OBJFILES)
-	$(CXX) $(OBJFILES) main.cpp -I include $(LDFLAGS) $(LIBS)
+	$(CXX) $(OBJFILES) -I include $(LDFLAGS) $(LIBS)
 
 %.o : %.c
 	$(CXX) -I include -c $< -o $@
