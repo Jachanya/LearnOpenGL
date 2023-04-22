@@ -1,25 +1,26 @@
-#include "rectangle.hpp"
+#include "rectangle_graphics.hpp"
 
-namespace NNGraphics{
-    Rectangle::Rectangle()
+namespace jachan
+{
+    RectangleGraphicsComponent::RectangleGraphicsComponent()
     : shader{"shadersProgram/shader.vs", "shadersProgram/shader.fs"}
     {
         createContext();
     }
 
-    Rectangle::Rectangle(const char* vertexPath, const char* fragmentPath)
+    RectangleGraphicsComponent::RectangleGraphicsComponent(const char* vertexPath, const char* fragmentPath)
     : shader{vertexPath, fragmentPath}
     {
         createContext();
     }
 
-    Rectangle::~Rectangle(){
+    RectangleGraphicsComponent::~RectangleGraphicsComponent(){
         glDeleteVertexArrays(1, &VAO);
         glDeleteBuffers(1, &VBO);
         glDeleteBuffers(1, &EBO);
     }
 
-    void Rectangle::createContext(){
+    void RectangleGraphicsComponent::createContext(){
         glGenVertexArrays(1, &VAO);
         glGenBuffers(1, &VBO);
         glGenBuffers(1, &EBO);
@@ -43,17 +44,14 @@ namespace NNGraphics{
         glBindVertexArray(0);
     }
     
-    void Rectangle::display(const std::vector<float>& position, const std::vector<float>& color, int depth){
+    void RectangleGraphicsComponent::update(Entity &entity){
         shader.use();
         glBindVertexArray(VAO);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO); 
 
-        assert(position.size() == 3);
-        assert(color.size() == 3);
-
         glm::mat4 transform = glm::mat4(1.0f);
         float colorAmount = static_cast<float>(sin(glfwGetTime()));
-        transform = glm::translate(transform, glm::vec3(position[0], position[1], position[2]));
+        // transform = glm::translate(transform, glm::vec3(position[0], position[1], position[2]));
         //transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f)); 
         // transform = glm::rotate(transform, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
         // transform = glm::scale(transform, glm::vec3(15, 15, 15)); 
@@ -88,7 +86,7 @@ namespace NNGraphics{
         shader.setGlUniformMatrix4fv("transform", glm::value_ptr(transform));
 
         unsigned int colorRectLoc = glGetUniformLocation(shader.ID, "rectColor");
-        glUniform3f(colorRectLoc, color[0], colorAmount, camY);
+        glUniform3f(colorRectLoc, 0.3, colorAmount, camY);
         //glDrawArrays(GL_TRIANGLES, 0, 3);
         
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

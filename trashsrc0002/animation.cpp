@@ -61,9 +61,19 @@ namespace jachan
             glClearColor(0.0f, 0.5f, 0.5f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
+            for(int i = 0; i < numOfEntites_; i++)
+            {
+                entities_[i]->update();
+            }
             glfwSwapBuffers(window);
             glfwPollEvents();
         }
+    }
+
+    void Animation::addEntity(Entity *entity)
+    {
+        entities_.push_back(entity);
+        numOfEntites_++;
     }
 
     void Animation::initContext()

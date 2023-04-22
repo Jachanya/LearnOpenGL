@@ -1,17 +1,22 @@
-#ifndef _RECTANGLE_H_
-#define _RECTANGLE_H_
+#ifndef _RECTANGLE_GRAPHICS_H_
+#define _RECTANGLE_GRAPHICS_H_
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
-#include "shader.hpp"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <vector>
 
-namespace NNGraphics{
-    class Rectangle{
+#include "shader.hpp"
+#include "entity.hpp"
+#include "component.hpp"
+
+namespace jachan
+{
+
+    class RectangleGraphicsComponent : public GraphicsComponent
+    {
         private:
         Shader shader;
         unsigned int EBO;
@@ -38,17 +43,16 @@ namespace NNGraphics{
         };
 
         public:
-        Rectangle();
-        Rectangle(const char* vertexPath, const char* fragmentPath);
-        ~Rectangle();
-        //function to call when we want to display rectangle on the screen.
-        void display(const std::vector<float>& position,const std::vector<float>& color, int depth);
+        RectangleGraphicsComponent();
+        RectangleGraphicsComponent(const char* vertexPath, const char* fragmentPath);
+        virtual ~RectangleGraphicsComponent();
+        void update(Entity& entity);
 
         private:
 
         //initialize and bind vbo, vao, ebo
         void createContext();
     };
-};
+}
 
 #endif

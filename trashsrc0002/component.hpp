@@ -6,7 +6,7 @@
 namespace jachan
 {
     class Entity;
-    
+
     class InputComponent
     {
         public:
@@ -24,6 +24,7 @@ namespace jachan
     {
         public:
         virtual ~GraphicsComponent();
+        virtual void update(Entity &entity) = 0;
     };
 }
 

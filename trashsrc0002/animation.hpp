@@ -13,14 +13,15 @@ namespace jachan{
     {
         private:
         int SCR_HEIGHT{800}, SCR_WIDTH{800};
-        std::vector<Entity> entites;
+        int numOfEntites_{0};
+        std::vector<Entity*> entities_;
         GLFWwindow *window;
-        int numOfEntites;
 
         public:
         Animation();
         void initContext();
         void gameLoop();
+        void addEntity(Entity *entity);
 
         private:
         int initWindow();
