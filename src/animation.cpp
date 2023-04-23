@@ -28,7 +28,7 @@ namespace jachan
         // set render-specific controls
         Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
         // load textures
-        ResourceManager::LoadTexture("src\\textures\\cartoon.png", true, "face");
+        ResourceManager::LoadTexture("src\\textures\\orange.png", true, "face");
     }
 
     void Animation::Update(float dt)
@@ -44,6 +44,6 @@ namespace jachan
     void Animation::Render()
     {
         Renderer->DrawSprite(ResourceManager::GetTexture("face"), 
-        glm::vec2(200.0f, 200.0f), glm::vec2(300.0f, 400.0f), 45.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+        glm::vec2(100.0f, 100.0f), glm::vec2(10.0f, 10.0f), 00.0f, glm::vec3(0.0f, 1.0f, 0.0f));
     }
 }
