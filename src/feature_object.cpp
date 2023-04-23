@@ -10,9 +10,9 @@ namespace jachan{
         // clear old data
         this->Bricks.clear();
         // load from file
-        glm::vec3 color = glm::vec3(1.0f); // original: white
+        glm::vec4 color = glm::vec4(1.0f); // original: white
         
-        color = glm::vec3(0.2f, 0.6f, 1.0f);
+        color = glm::vec4(0.2f, 0.6f, 1.0f, 1.0f);
         int height = 1;
         int width = row; 
         float unit_width = levelWidth / static_cast<float>(width), unit_height = levelHeight / height; 

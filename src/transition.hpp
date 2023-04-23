@@ -1,17 +1,19 @@
 #ifndef _TRANSITION_H_
 #define _TRANSITION_H_
 
+#include "sprite_renderer.hpp"
+#include "game_object.hpp"
+
 namespace jachan
 {
     class Transition
     {
     public:
-    virtual ~Transition() = 0;
-    virtual void transform() = 0;
+    virtual ~Transition(){};
+    virtual GameObject& transform(SpriteRenderer &renderer) = 0;
     };
 
-    ~Transition::Transition(){}
-    void Transition::transform(){}
+
 }
 
 #endif

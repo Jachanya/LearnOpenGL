@@ -6,7 +6,8 @@ namespace jachan
     : gameObject{gameObject}
     {}
 
-    void IdentityTransition::transform()
+    GameObject& IdentityTransition::transform(SpriteRenderer &renderer)
     {
+        return gameObject;
     }
 }

@@ -26,6 +26,7 @@ namespace jachan{
         AnimationState State;
         bool Keys[1024];
         unsigned int Width, Height;
+        float beep{90};
         std::vector<FeatureObject>  Features;
         Animation(unsigned int width, unsigned int height);
         ~Animation();

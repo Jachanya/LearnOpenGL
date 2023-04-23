@@ -1,7 +1,6 @@
 #include "animation.hpp"
 #include <iostream>
-#include "fade_transition.hpp"
-#include "identity_transition.hpp"
+
 
 namespace jachan
 {
@@ -33,12 +32,11 @@ namespace jachan
         // load textures
         ResourceManager::LoadTexture("src\\textures\\orange.png", true, "face");
         ResourceManager::LoadTexture("src\\textures\\block.png", true, "block");
-        
+
         FeatureObject feature01;
-        
         feature01.Load(5, this->Width, this->Height /2);
-        
-        this->Features.emplace_back(feature01);
+        this->Features.emplace_back(feature01); 
+             
     }
 
     void Animation::Update(float dt)
@@ -52,11 +50,19 @@ namespace jachan
     }
 
     void Animation::Render()
-    {
-        IdentityTransition iTransition{this->Features[0].Bricks[0]};
+    {   
+        IdentityTransition iTransition{this->Features[0].Bricks[2]};
         FadeTransition fTransition{iTransition};
+        fTransition.setBeep(this->beep);
+        fTransition.transform(*Renderer);
+        // std::cout << this->beep << std::endl;
+        
         this->Features[0].Draw(*Renderer);
         Renderer->DrawSprite(ResourceManager::GetTexture("face"), 
-        glm::vec2(100.0f, 100.0f), glm::vec2(100.0f, 100.0f), 00.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+        glm::vec2(100.0f, 100.0f), glm::vec2(100.0f, 100.0f), 00.0f, glm::vec4(0.3f, 1.0f, 0.0f, 1.0f));
+        
+        if(this->beep > 180) this->beep = 0;
+        this->beep = this->beep + 0.2;
+        
     }
 }

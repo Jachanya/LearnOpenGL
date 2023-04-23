@@ -3,6 +3,7 @@
 
 #include "transition.hpp"
 #include "game_object.hpp"
+#include "sprite_renderer.hpp"
 
 namespace jachan
 {
@@ -11,7 +12,7 @@ namespace jachan
     public:
         IdentityTransition(GameObject& gameObject);
         ~IdentityTransition() = default;
-        void transform();
+        GameObject& transform(SpriteRenderer &renderer);
     private:
         GameObject& gameObject;
     };

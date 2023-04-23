@@ -1,4 +1,5 @@
 #include "fade_transition.hpp"
+#include <iostream>
 
 namespace jachan
 {
@@ -6,8 +7,20 @@ namespace jachan
     : transition{transition}
     {}
 
-    void FadeTransition::transform()
+    void FadeTransition::setBeep(float current_iteration)
     {
+        this->current_iteration = current_iteration;
+    }
 
+    GameObject& FadeTransition::transform(SpriteRenderer &renderer)
+    {
+        GameObject& gameObj = transition.transform(renderer);
+
+        std::cout << current_iteration << std::endl;
+        
+        gameObj.Color = glm::vec4(gameObj.Color.x, gameObj.Color.y ,  gameObj.Color.z, glm::cos(glm::radians(static_cast<float>(current_iteration))));
+        gameObj.Draw(renderer);
+        
+        return gameObj;
     }
 }
