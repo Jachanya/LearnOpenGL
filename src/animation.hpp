@@ -6,6 +6,9 @@
 
 #include "sprite_renderer.hpp"
 #include "resource_manager.hpp"
+#include "feature_object.hpp"
+#include "fade_transition.hpp"
+#include "identity_transition.hpp"
 
 namespace jachan{
 
@@ -18,11 +21,12 @@ namespace jachan{
 
     class Animation
     {
-        public:
+    public:
 
         AnimationState State;
         bool Keys[1024];
         unsigned int Width, Height;
+        std::vector<FeatureObject>  Features;
         Animation(unsigned int width, unsigned int height);
         ~Animation();
 

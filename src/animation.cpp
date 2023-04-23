@@ -1,4 +1,7 @@
 #include "animation.hpp"
+#include <iostream>
+#include "fade_transition.hpp"
+#include "identity_transition.hpp"
 
 namespace jachan
 {
@@ -13,7 +16,7 @@ namespace jachan
 
     Animation::~Animation()
     {
-        
+        delete Renderer;
     }
 
     void Animation::Init()
@@ -29,6 +32,13 @@ namespace jachan
         Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
         // load textures
         ResourceManager::LoadTexture("src\\textures\\orange.png", true, "face");
+        ResourceManager::LoadTexture("src\\textures\\block.png", true, "block");
+        
+        FeatureObject feature01;
+        
+        feature01.Load(5, this->Width, this->Height /2);
+        
+        this->Features.emplace_back(feature01);
     }
 
     void Animation::Update(float dt)
@@ -43,7 +53,10 @@ namespace jachan
 
     void Animation::Render()
     {
+        IdentityTransition iTransition{this->Features[0].Bricks[0]};
+        FadeTransition fTransition{iTransition};
+        this->Features[0].Draw(*Renderer);
         Renderer->DrawSprite(ResourceManager::GetTexture("face"), 
-        glm::vec2(100.0f, 100.0f), glm::vec2(10.0f, 10.0f), 00.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+        glm::vec2(100.0f, 100.0f), glm::vec2(100.0f, 100.0f), 00.0f, glm::vec3(0.0f, 1.0f, 0.0f));
     }
 }
