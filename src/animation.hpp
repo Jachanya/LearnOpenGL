@@ -9,6 +9,7 @@
 #include "feature_object.hpp"
 #include "fade_transition.hpp"
 #include "identity_transition.hpp"
+#include "matrix_object.hpp"
 
 namespace jachan{
 
@@ -28,6 +29,7 @@ namespace jachan{
         unsigned int Width, Height;
         float beep{90};
         std::vector<FeatureObject>  Features;
+        std::vector<MatrixObject>  Embeddings;
         Animation(unsigned int width, unsigned int height);
         ~Animation();
 

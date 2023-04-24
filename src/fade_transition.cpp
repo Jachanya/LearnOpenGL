@@ -15,8 +15,6 @@ namespace jachan
     GameObject& FadeTransition::transform(SpriteRenderer &renderer)
     {
         GameObject& gameObj = transition.transform(renderer);
-
-        std::cout << current_iteration << std::endl;
         
         gameObj.Color = glm::vec4(gameObj.Color.x, gameObj.Color.y ,  gameObj.Color.z, glm::cos(glm::radians(static_cast<float>(current_iteration))));
         gameObj.Draw(renderer);

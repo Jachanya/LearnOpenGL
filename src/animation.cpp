@@ -36,6 +36,15 @@ namespace jachan
         FeatureObject feature01;
         feature01.Load(5, this->Width, this->Height /2);
         this->Features.emplace_back(feature01); 
+
+        
+        MatrixObject mat01;
+        
+        mat01.Load(5, 10, this->Width, this->Height /2);
+        
+        this->Embeddings.emplace_back(mat01); 
+
+        
              
     }
 
@@ -58,8 +67,10 @@ namespace jachan
         // std::cout << this->beep << std::endl;
         
         this->Features[0].Draw(*Renderer);
-        Renderer->DrawSprite(ResourceManager::GetTexture("face"), 
-        glm::vec2(100.0f, 100.0f), glm::vec2(100.0f, 100.0f), 00.0f, glm::vec4(0.3f, 1.0f, 0.0f, 1.0f));
+
+        this->Embeddings[0].Draw(*Renderer);
+        // Renderer->DrawSprite(ResourceManager::GetTexture("face"), 
+        // glm::vec2(100.0f, 100.0f), glm::vec2(100.0f, 100.0f), 00.0f, glm::vec4(0.3f, 1.0f, 0.0f, 1.0f));
         
         if(this->beep > 180) this->beep = 0;
         this->beep = this->beep + 0.2;
