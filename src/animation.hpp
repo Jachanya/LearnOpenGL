@@ -10,6 +10,7 @@
 #include "fade_transition.hpp"
 #include "identity_transition.hpp"
 #include "matrix_object.hpp"
+#include "mat_vec_mul.hpp"
 
 namespace jachan{
 

@@ -18,7 +18,7 @@ namespace jachan
             std::vector<GameObject> temp;
             for(int y = 0; y< col; y++)
             {
-                glm::vec2 pos( (unit_width * x) + (x), (unit_height * y) + (y));
+                glm::vec2 pos( (unit_width * x) + (x * 15), (unit_height * y) + (y));
                 glm::vec2 size(unit_width, unit_height);
 
                 color = glm::vec4(0.2f, 0.6f * x, 1.0f, 1.0f);

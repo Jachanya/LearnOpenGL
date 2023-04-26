@@ -4,7 +4,8 @@
 #include <sstream>
 #include <iostream>
 
-namespace jachan{
+namespace jachan
+{
     void FeatureObject::Load(unsigned int row, unsigned int levelWidth, unsigned int levelHeight)
     {
         // clear old data
@@ -13,16 +14,17 @@ namespace jachan{
         glm::vec4 color = glm::vec4(1.0f); // original: white
         
         color = glm::vec4(0.2f, 0.6f, 1.0f, 1.0f);
-        int height = 1;
+        int height = row;
         int width = row; 
         float unit_width = levelWidth / static_cast<float>(width), unit_height = levelHeight / height; 
-        unit_width *= 0.2;
+        unit_width *= 0.3;
+        unit_height *= 0.3;
         
         int y = 0;
         for(int i = 0; i < row; i++)
         {
-            glm::vec2 pos((unit_width * i) + (1 * i), unit_height * y);
-            glm::vec2 size(unit_width, unit_width);
+            glm::vec2 pos((0.0), (unit_height * i) + (i));
+            glm::vec2 size(unit_width, unit_height);
             
             this->Bricks.emplace_back(GameObject(pos, size, ResourceManager::GetTexture("block"), color));
         }

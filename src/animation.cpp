@@ -34,7 +34,7 @@ namespace jachan
         ResourceManager::LoadTexture("src\\textures\\block.png", true, "block");
 
         FeatureObject feature01;
-        feature01.Load(5, this->Width, this->Height /2);
+        feature01.Load(10, this->Width, this->Height /2);
         this->Features.emplace_back(feature01); 
 
         
@@ -44,8 +44,7 @@ namespace jachan
         
         this->Embeddings.emplace_back(mat01); 
 
-        
-             
+         
     }
 
     void Animation::Update(float dt)
@@ -60,15 +59,17 @@ namespace jachan
 
     void Animation::Render()
     {   
-        IdentityTransition iTransition{this->Features[0].Bricks[2]};
-        FadeTransition fTransition{iTransition};
-        fTransition.setBeep(this->beep);
-        fTransition.transform(*Renderer);
-        // std::cout << this->beep << std::endl;
+        // IdentityTransition iTransition{this->Features[0].Bricks[2]};
+        // FadeTransition fTransition{iTransition};
+        // fTransition.setBeep(this->beep);
+        // fTransition.transform(*Renderer);
+        // // std::cout << this->beep << std::endl;
         
-        this->Features[0].Draw(*Renderer);
+        // this->Features[0].Draw(*Renderer);
 
-        this->Embeddings[0].Draw(*Renderer);
+        MatVecMul matmul{this->Embeddings[0], this->Features[0]};    
+
+        matmul.Draw(*Renderer);
         // Renderer->DrawSprite(ResourceManager::GetTexture("face"), 
         // glm::vec2(100.0f, 100.0f), glm::vec2(100.0f, 100.0f), 00.0f, glm::vec4(0.3f, 1.0f, 0.0f, 1.0f));
         
